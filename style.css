@@ -1,0 +1,611 @@
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  background-color: #f0f2f5;
+}
+
+.container {
+  display: flex;
+  gap: 40px;
+  max-width: 1400px;
+  width: 100%;
+}
+
+.calendar-section, .todo {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+.calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.calendar-header {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+  margin-bottom: 10px;
+}
+
+.calendar-header div {
+  text-align: center;
+  font-weight: bold;
+  padding: 12px;
+  background-color: #4a90e2;
+  color: white;
+  border-radius: 6px;
+}
+
+.calendar-day {
+  min-height: 120px;
+  padding: 10px;
+  border: 1px solid #e1e4e8;
+  background-color: white;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.calendar-day:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.calendar-day.empty {
+  background-color: #f8f9fa;
+  border: 1px dashed #e1e4e8;
+}
+
+.calendar-day h3 {
+  margin: 0 0 5px 0;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #e1e4e8;
+  color: #2c3e50;
+}
+
+.day {
+  border: 1px solid #ccc;
+  padding: 10px;
+  min-height: 100px;
+}
+
+.day h3 {
+  margin-top: 0;
+}
+
+.todo {
+  min-width: 300px;
+  max-width: 350px;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+.todo input {
+  width: calc(100% - 24px); /* Account for padding */
+  padding: 8px 12px;
+  border: 1px solid #e1e4e8;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  box-sizing: border-box; /* Include padding in width calculation */
+}
+
+.todo input:focus {
+  outline: none;
+  border-color: #4a90e2;
+  box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
+}
+
+.todo button {
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.todo button:hover {
+  background-color: #357abd;
+}
+
+.todo-header {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+#task-list {
+  max-height: 400px;
+  overflow-y: auto;
+  padding-right: 5px;
+}
+
+/* Add a subtle scrollbar style */
+#task-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+#task-list::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+#task-list::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+#task-list::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.task-text {
+  color: #2c3e50;
+}
+
+.task-text.completed {
+  text-decoration: line-through;
+  color: #95a5a6;
+}
+
+.task-checkbox {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  border: 2px solid #4a90e2;
+  border-radius: 3px;
+}
+
+.month-title {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #2c3e50;
+  font-weight: bold;
+}
+
+.add-appointment-btn {
+  padding: 2px 8px;
+  font-size: 16px;
+  border: 1px solid #e1e4e8;
+  background-color: #f8f9fa;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 5px;
+  color: #4a90e2;
+  transition: all 0.2s ease;
+}
+
+.add-appointment-btn:hover {
+  background-color: #4a90e2;
+  color: white;
+  border-color: #4a90e2;
+}
+
+.calendar-tabs {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #e1e4e8;
+  padding-bottom: 10px;
+}
+
+.tab-buttons {
+  display: flex;
+  gap: 10px;
+  flex: 1;
+}
+
+.tab-button {
+  padding: 8px 16px;
+  border: 1px solid #e1e4e8;
+  border-radius: 6px;
+  background-color: #f8f9fa;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #2c3e50;
+  transition: all 0.2s ease;
+}
+
+.tab-button:hover {
+  background-color: #f1f4f8;
+}
+
+.tab-button.active {
+  background-color: #4a90e2;
+  color: white;
+  border-color: #4a90e2;
+}
+
+.tab-button .delete-tab {
+  font-size: 18px;
+  line-height: 1;
+  padding: 0 4px;
+  border-radius: 50%;
+}
+
+.tab-button:hover .delete-tab {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.add-calendar-btn {
+  padding: 8px 16px;
+  background-color: #2ecc71;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.add-calendar-btn:hover {
+  background-color: #27ae60;
+}
+
+.calendar-views > div {
+  display: none;
+}
+
+.calendar-views > div.active {
+  display: block;
+}
+
+/* Todo list styling */
+.todo h2 {
+  color: #2c3e50;
+  margin-bottom: 20px;
+}
+
+.todo button {
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.todo button:hover {
+  background-color: #357abd;
+}
+
+/* Appointments styling */
+.appointments div {
+  padding: 4px 8px;
+  background-color: #f8f9fa;
+  border-radius: 4px;
+  margin-bottom: 4px;
+  font-size: 14px;
+  color: #2c3e50;
+}
+
+.month-navigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.nav-btn {
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 18px;
+  transition: all 0.2s ease;
+}
+
+.nav-btn:hover {
+  background-color: #357abd;
+}
+
+.month-title {
+  text-align: center;
+  margin: 0;
+  font-size: 24px;
+  color: #2c3e50;
+  font-weight: bold;
+  flex: 1;
+}
+
+/* Update existing calendar container styles */
+.calendar-container {
+  width: 100%;
+}
+
+/* Ensure the calendar grid stays responsive */
+.calendar {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+  padding: 20px 0;
+}
+
+/* Add styles for the legend and appointment colors */
+.calendar-legend {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.legend-item:hover {
+  background-color: #f8f9fa;
+}
+
+.legend-item.selected {
+  background-color: #f0f0f0;
+}
+
+.color-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+/* Appointment type colors */
+.appointment-family {
+  background-color: #FF9F9F;
+  border-left: 3px solid #FF6B6B;
+}
+
+.appointment-child1 {
+  background-color: #9FD4FF;
+  border-left: 3px solid #2196F3;
+}
+
+.appointment-child2 {
+  background-color: #B4FF9F;
+  border-left: 3px solid #4CAF50;
+}
+
+.appointment-child3 {
+  background-color: #FFE59F;
+  border-left: 3px solid #FFC107;
+}
+
+.appointment-adults {
+  background-color: #E09FFF;
+  border-left: 3px solid #9C27B0;
+}
+
+/* Update existing appointments styling */
+.appointments div {
+  padding: 6px 10px;
+  border-radius: 4px;
+  margin-bottom: 4px;
+  font-size: 14px;
+  color: #2c3e50;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  min-width: 300px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.form-group label {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+.form-group input {
+  padding: 8px;
+  border: 1px solid #e1e4e8;
+  border-radius: 4px;
+}
+
+.modal-btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.modal-btn:first-child {
+  background-color: #4a90e2;
+  color: white;
+}
+
+.modal-btn:last-child {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.modal-btn:hover {
+  opacity: 0.9;
+}
+
+/* Style for multi-day appointments */
+.appointment-multiday {
+  background-color: rgba(74, 144, 226, 0.1);
+  border-left: 3px solid #4a90e2;
+  margin: -5px -10px;
+  padding: 5px 10px;
+}
+
+.appointment-multiday.start {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  margin-left: 0;
+  padding-left: 5px;
+}
+
+.appointment-multiday.end {
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  margin-right: 0;
+  padding-right: 5px;
+}
+
+/* Add sidebar styles */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-width: 300px;
+  max-width: 350px;
+}
+
+/* Weather widget styles */
+.weather-widget {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.weather-icon {
+  width: 50px;
+  height: 50px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.weather-info {
+  flex: 1;
+}
+
+.weather-temp {
+  font-size: 24px;
+  font-weight: bold;
+  color: #2c3e50;
+  margin-bottom: 5px;
+}
+
+.weather-desc {
+  color: #7f8c8d;
+  font-size: 14px;
+  text-transform: capitalize;
+}
+
+.day-weather {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin: 5px 0;
+  font-size: 12px;
+  color: #666;
+}
+
+.day-weather img {
+  width: 30px;
+  height: 30px;
+}
+
+.delete-btn {
+  background: none;
+  border: none;
+  color: #e74c3c;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 0 5px;
+  line-height: 1;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.appointment-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.appointment-content:hover .delete-btn,
+.task-item:hover .delete-btn {
+  opacity: 1;
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 5px 0;
+}
+
+.task-item .delete-btn {
+  margin-left: auto;
+  font-size: 16px;
+}
+
+/* Update appointment styling */
+.appointments div {
+  padding: 6px 10px;
+  border-radius: 4px;
+  margin-bottom: 4px;
+  font-size: 14px;
+  color: #2c3e50;
+  transition: background-color 0.2s ease;
+}
+
+.appointments div:hover {
+  background-color: rgba(0, 0, 0, 0.02);
+}

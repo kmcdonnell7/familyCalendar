@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calendar & To-Do List</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="sidebar">
+      <div class="weather-widget">
+        <div class="weather-icon"></div>
+        <div class="weather-info">
+          <div class="weather-temp"></div>
+          <div class="weather-desc"></div>
+        </div>
+      </div>
+      <div class="todo">
+        <h2>To-Do List</h2>
+        <input type="text" id="new-task" placeholder="Add a new task">
+        <button onclick="addTask()">Add Task</button>
+        <ul id="task-list"></ul>
+      </div>
+    </div>
+    <div class="calendar-section">
+      <div class="calendar-tabs">
+        <div class="tab-buttons">
+          <!-- Tab buttons will be generated here -->
+        </div>
+        <button id="add-calendar-btn" class="add-calendar-btn">+ New Calendar</button>
+      </div>
+      <div class="calendar-views">
+        <!-- Calendar views will be generated here -->
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
